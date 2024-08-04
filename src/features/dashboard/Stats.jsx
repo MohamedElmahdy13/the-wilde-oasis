@@ -17,6 +17,8 @@ function Stats({ bookings, confirmedStays, numDays, cabinCount }) {
   const occupation =
     confirmedStays.reduce((acc, cur) => (acc += cur.numNights), 0) /
     (numDays * cabinCount);
+
+  // console.log(confirmedStays);
   // 10 rooms  *7 70 night
   return (
     <>

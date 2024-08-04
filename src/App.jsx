@@ -28,7 +28,7 @@ function App() {
   });
 
   return (
-    <>
+    <div style={{ position: 'relative' }}>
       <DarkModeProvider>
         <GlobalStyles />
         <QueryClientProvider client={queryClient}>
@@ -79,7 +79,7 @@ function App() {
           />
         </QueryClientProvider>
       </DarkModeProvider>
-    </>
+    </div>
   );
 }
 

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const StyledStat = styled.div`
   /* Box */
@@ -12,6 +12,9 @@ const StyledStat = styled.div`
   grid-template-rows: auto auto;
   column-gap: 1.6rem;
   row-gap: 0.4rem;
+  @media (max-width: 600px) {
+    text-align: right;
+  }
 `;
 
 const Icon = styled.div`

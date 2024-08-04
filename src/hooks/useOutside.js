@@ -2,7 +2,7 @@ import { useRef, useEffect } from 'react';
 
 export function useOutsideClick(handler, listerCapturing = true) {
   const ref = useRef();
-
+ 
   useEffect(
     function () {
       function handleClick(e) {

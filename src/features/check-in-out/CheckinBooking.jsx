@@ -15,9 +15,6 @@ import Checkbox from './../../ui/Checkbox';
 import { formatCurrency } from '../../utils/helpers';
 import { useCheckin } from './useCheckin';
 import { useSettings } from '../settings/useSettings';
-import Modal from './../../ui/Modal';
-
-import ConfirmDelete from './../../ui/ConfirmDelete';
 
 const Box = styled.div`
   /* Box */

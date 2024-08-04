@@ -109,6 +109,7 @@ function Toggle({ id }) {
   const { openId, close, open, setPosition } = useContext(MenusContext);
   // const [isActive, setActive] = useState(false);
   function handleClick(e) {
+    e.stopPropagation();
     const rect = e.target.closest('button').getBoundingClientRect();
 
     const tableRect = e.target
@@ -136,7 +137,7 @@ function Toggle({ id }) {
 }
 function List({ id, children }) {
   const { openId, position, close } = useContext(MenusContext);
-  const ref = useOutsideClick(close);
+  const ref = useOutsideClick(close, false);
   if (openId !== id) return null;
   return (
     <StyledList ref={ref} position={position}>

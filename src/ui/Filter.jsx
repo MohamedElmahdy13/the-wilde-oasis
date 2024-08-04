@@ -33,11 +33,17 @@ const FilterButton = styled.button`
     background-color: var(--color-brand-600);
     color: var(--color-brand-50);
   }
+
+  @media (max-width: 577px) {
+    font-size: 1rem;
+  }
 `;
 
 function Filter({ filterField, options }) {
   const [searchParams, setSearchParams] = useSearchParams();
+
   const filterValue = searchParams.get(filterField) || options.at(0).value;
+
   function handleClick(value) {
     if (searchParams.get('page')) searchParams.set('page', 1);
     searchParams.set(filterField, value);

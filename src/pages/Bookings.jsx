@@ -12,6 +12,7 @@ function Bookings() {
         <BookingTableOperations />
       </Row>
       <BookingTable />
+
       <AddBooking />
     </>
   );

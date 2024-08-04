@@ -1,5 +1,4 @@
 import { createGlobalStyle } from 'styled-components';
-
 const GlobalStyles = createGlobalStyle`
 :root {
 
@@ -184,6 +183,12 @@ img {
 
   /* For dark mode */
   filter: grayscale(var(--image-grayscale)) opacity(var(--image-opacity));
+}
+
+@media (max-width: 577px){
+html{
+  font-size:50%;
+}
 }
 
 `;

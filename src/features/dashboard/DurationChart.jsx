@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Heading from './../../ui/Heading';
+import { useDarkMode } from '../../context/DarkModeContext';
 import {
   Cell,
   Legend,
@@ -25,6 +26,32 @@ const ChartBox = styled.div`
   & .recharts-pie-label-text {
     font-weight: 600;
   }
+
+  & .recharts-responsive-container {
+    @media (max-width: 577px) {
+      height: auto !important;
+    }
+  }
+  & .recharts-wrapper {
+    @media (max-width: 577px) {
+      max-height: 50rem !important;
+    }
+  }
+
+  @media (max-width: 1025px) {
+    grid-column: 1/ -1;
+  }
+  & .recharts-legend-wrapper {
+    @media (max-width: 577px) {
+      position: static !important;
+      width: 1% !important;
+      & ul {
+        width: 150px;
+        display: flex;
+        flex-wrap: wrap;
+      }
+    }
+  }
 `;
 
 const startDataLight = [
@@ -40,22 +67,22 @@ const startDataLight = [
   },
   {
     duration: '3 nights',
-    value: 3,
+    value: 0,
     color: '#eab308',
   },
   {
     duration: '4-5 nights',
-    value: 5,
+    value: 0,
     color: '#84cc16',
   },
   {
     duration: '6-7 nights',
-    value: 6,
+    value: 0,
     color: '#22c55e',
   },
   {
     duration: '8-14 nights',
-    value: 10,
+    value: 0,
     color: '#14b8a6',
   },
   {
@@ -65,7 +92,7 @@ const startDataLight = [
   },
   {
     duration: '21+ nights',
-    value: 2,
+    value: 0,
     color: '#a855f7',
   },
 ];
@@ -141,14 +168,17 @@ function prepareData(startData, stays) {
 }
 
 function DurationChart({ confirmedStays }) {
+  const { isDarkMode } = useDarkMode();
+  const startData = isDarkMode ? startDataDark : startDataLight;
+  const data = prepareData(startData, confirmedStays);
   return (
     <ChartBox>
       <Heading as="h2">Stay duration summary</Heading>
 
-      <ResponsiveContainer>
+      <ResponsiveContainer width="100%" height={240}>
         <PieChart>
           <Pie
-            data={startDataLight}
+            data={data}
             nameKey="duration"
             dataKey="value"
             innerRadius={85}
@@ -157,7 +187,7 @@ function DurationChart({ confirmedStays }) {
             cy="50%"
             paddingAngle={3}
           >
-            {startDataLight.map((entry) => (
+            {data.map((entry) => (
               <Cell
                 key={entry.duration}
                 fill={entry.color}
